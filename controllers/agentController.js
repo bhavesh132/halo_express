@@ -20,7 +20,8 @@ export const getOnlineAgents = async (req, res) => {
 };
 
 export const getAgentListbyID = async (req, res) => {
-  const query = "SELECT unum as id, uname as agent_name from Uname";
+  const query =
+    "SELECT unum as id, uname as agent_name from Uname JOIN LOOKUP v on uname.CFWorkRole = v.fcode AND fid = 182 WHERE v.fcode in (1,2,3,4)";
   try {
     const response = await haloAxios.post("/report", [
       {
