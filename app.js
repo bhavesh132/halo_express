@@ -13,7 +13,7 @@ app.use(cors());
 
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: "http://10.10.0.22:5173", 
     methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
     credentials: true,
   })
@@ -22,6 +22,6 @@ app.use(
 import agentRoutes from "./routes/agentRoutes.js";
 app.use("/api", agentRoutes);
 
-app.listen(process.env.PORT, () => {
-  console.log(`app listening on port ${process.env.PORT}`);
+app.listen(process.env.PORT, process.env.HOST, () => {
+  console.log(`app listening on ${process.env.HOST}:${process.env.PORT}`);
 });
